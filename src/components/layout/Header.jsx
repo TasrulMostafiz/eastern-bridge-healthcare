@@ -12,6 +12,7 @@ import {
   Zap
 } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import Logo from '../ui/Logo';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -216,45 +217,9 @@ const Header = () => {
       >
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
-            {/* Animated Logo */}
-            <Link to="/" className="flex items-center space-x-3">
-              <motion.div
-                variants={logoVariants}
-                initial="hidden"
-                animate="visible"
-                whileHover={{ 
-                  scale: 1.1,
-                  rotate: [0, -10, 10, 0],
-                  transition: { duration: 0.5 }
-                }}
-                className="relative"
-              >
-                <div className="w-14 h-14 bg-gradient-to-br from-blue-600 via-blue-500 to-teal-400 rounded-xl flex items-center justify-center shadow-lg">
-                  <span className="text-white font-bold text-2xl">EB</span>
-                </div>
-                <motion.div
-                  animate={{
-                    scale: [1, 1.2, 1],
-                    opacity: [1, 0.8, 1]
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                  className="absolute -bottom-2 -right-2 w-5 h-5 bg-green-500 rounded-full border-2 border-white shadow-lg"
-                />
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 }}
-              >
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-700 via-blue-600 to-blue-800 bg-clip-text text-transparent">
-                  Eastern Bridge
-                </h1>
-                <p className="text-xs text-gray-600 font-semibold tracking-wider">MEDICAL CARE CHINA</p>
-              </motion.div>
+            {/* Animated Logo */}           
+            <Link to="/" className="flex items-center flex-shrink-0">
+              <Logo />
             </Link>
 
             {/* Desktop Navigation */}

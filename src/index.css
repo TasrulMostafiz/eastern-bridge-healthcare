@@ -77,3 +77,25 @@
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-primary-blue;
 }
+
+:root {
+  --primary-navy: #0F2D5F;
+  --primary-blue: #1E5FA6;
+  --primary-teal: #2AA9B3;
+}
+
+.btn-medical {
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-teal));
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.btn-emergency {
+  background: #FF6B6B;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+}

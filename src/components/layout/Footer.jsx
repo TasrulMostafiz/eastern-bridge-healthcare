@@ -17,6 +17,7 @@ import {
   Send
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Logo from '../ui/Logo';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -107,7 +108,7 @@ const Footer = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
-      className="relative overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white"
+      className="bg-primary-navy text-white"
     >
       {/* Animated background elements */}
       <motion.div
@@ -210,42 +211,7 @@ const Footer = () => {
           >
             {/* Company Info */}
             <motion.div variants={itemVariants} className="space-y-6">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="flex items-center space-x-3"
-              >
-                <div className="relative">
-                  <motion.div
-                    animate={{
-                      rotate: 360,
-                    }}
-                    transition={{
-                      duration: 20,
-                      repeat: Infinity,
-                      ease: "linear"
-                    }}
-                    className="w-14 h-14 bg-gradient-to-br from-blue-400 to-teal-300 rounded-xl flex items-center justify-center"
-                  >
-                    <span className="text-white font-bold text-xl">EB</span>
-                  </motion.div>
-                  <motion.div
-                    animate={{
-                      scale: [1, 1.2, 1],
-                      opacity: [1, 0.8, 1]
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                    className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-400 rounded-full border-2 border-blue-800"
-                  />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold">Eastern Bridge</h3>
-                  <p className="text-blue-200 text-sm">Medical Care China</p>
-                </div>
-              </motion.div>
+              <Logo size="md" showText={true} className="[&_h1]:text-white [&_p]:text-blue-200"/>
               
               <p className="text-blue-100 leading-relaxed">
                 Bridging international patients with China's premier medical expertise and cutting-edge healthcare.
