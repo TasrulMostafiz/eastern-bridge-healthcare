@@ -85,13 +85,41 @@ const Patients = () => {
   return (
     <div className="pt-20">
       {/* Hero */}
-      <section className="bg-gradient-to-r from-primary-blue/10 to-primary-teal/10 py-20">
-        <div className="container-custom text-center">
+        {/* Patients Page Hero */}
+      <section className="relative bg-gradient-to-r from-primary-blue/5 to-primary-teal/5 py-20">
+        {/* Timeline Dots */}
+        <div className="absolute top-1/2 left-4 right-4 h-1 bg-gray-200 -translate-y-1/2 hidden lg:block"></div>
+        {[1, 2, 3, 4].map((num) => (
+          <div
+            key={num}
+            className="absolute top-1/2 w-8 h-8 bg-white border-4 border-primary-teal rounded-full -translate-y-1/2 hidden lg:block"
+            style={{ left: `${num * 25}%` }}
+          ></div>
+        ))}
+
+        <div className="container-custom relative z-10 text-center">
           <AnimatedSection>
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">For Patients & Visitors</h1>
+            <div className="inline-block bg-primary-teal text-white px-6 py-2 rounded-full font-semibold mb-6">
+              For Patients & Visitors
+            </div>
+            <h1 className="text-5xl font-bold text-gray-900 mb-6">
+              Your Treatment Journey
+            </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Complete support for international patients - from arrival to recovery
+              From consultation to recovery - we guide you every step of the way
             </p>
+
+            {/* Mobile Journey Steps */}
+            <div className="grid grid-cols-2 gap-4 mt-12 lg:hidden">
+              {['Consultation', 'Travel', 'Treatment', 'Recovery'].map((step, i) => (
+                <div key={i} className="bg-white p-4 rounded-xl shadow-sm">
+                  <div className="w-10 h-10 bg-primary-teal/10 rounded-lg flex items-center justify-center mx-auto mb-2">
+                    <span className="text-primary-teal font-bold">{i + 1}</span>
+                  </div>
+                  <span className="text-sm font-medium">{step}</span>
+                </div>
+              ))}
+            </div>
           </AnimatedSection>
         </div>
       </section>

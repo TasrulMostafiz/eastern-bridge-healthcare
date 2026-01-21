@@ -49,14 +49,14 @@ const HospitalPartners = () => {
   return (
     <section className="section-padding bg-gradient-to-b from-white to-gray-50">
       <div className="container-custom">
-        <AnimatedSection>
+        {/* <AnimatedSection>
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Partner Hospitals in China</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Collaborating with China's leading medical institutions to provide world-class healthcare
             </p>
           </div>
-        </AnimatedSection>
+        </AnimatedSection> */}
 
         {/* Features */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">

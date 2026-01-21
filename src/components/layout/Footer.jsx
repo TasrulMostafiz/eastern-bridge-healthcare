@@ -144,7 +144,7 @@ const Footer = () => {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ type: "spring", stiffness: 100 }}
-          className="bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-lg border border-white/20 rounded-2xl mx-4 lg:mx-auto lg:max-w-5xl -translate-y-1/2 p-8 shadow-2xl"
+          className="bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-lg border border-white/20 rounded-2xl mx-4 lg:mx-auto lg:max-w-5xl mt-8 lg:mt-12 p-8 shadow-2xl"
         >
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="text-center lg:text-left">

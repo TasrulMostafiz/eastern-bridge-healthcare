@@ -16,14 +16,14 @@ function App() {
     <Router>
       <Layout>
         <Routes>
-          <Route path="/" element={<Home />} />
-           <Route path="*" element={<NotFound />} />
-          {/* <Route path="/about" element={<About />} />
+          <Route path="/" element={<Home />} />           
+          <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/patients" element={<Patients />} />
           <Route path="/hospitals" element={<Hospitals />} />
-          <Route path="/consultants" element={<Consultants />} /> */}
+          <Route path="/consultants" element={<Consultants />} />
+          <Route path="*" element={<NotFound />} />
           
           {/* Add other routes as needed */}
         </Routes>

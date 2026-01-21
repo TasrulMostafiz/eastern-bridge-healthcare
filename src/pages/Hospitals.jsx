@@ -1,18 +1,35 @@
 import React from 'react';
 import AnimatedSection from '../components/ui/AnimatedSection';
 import HospitalPartners from '../components/sections/HospitalPartners';
+import { Building } from 'lucide-react';
 
 const Hospitals = () => {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary-blue/10 to-primary-teal/10 py-20">
-        <div className="container-custom text-center">
+      <section className="relative bg-gradient-to-r from-primary-blue to-primary-navy text-white py-20 overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 bg-white/5">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-32 translate-x-32"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/10 rounded-full translate-y-48 -translate-x-48"></div>
+        </div>
+
+        {/* Hospital Building Silhouette */}
+        <div className="absolute bottom-0 left-0 right-0 h-32">
+          <div className="h-full bg-gradient-to-t from-white/10 to-transparent"></div>
+        </div>
+
+        <div className="container-custom relative z-10 text-center">
           <AnimatedSection>
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">Partner Hospitals</h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Network of China's premier medical institutions providing world-class healthcare
-            </p>
+            <div className="mb-8">
+              <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <Building className="w-10 h-10" />
+              </div>
+              <h1 className="text-5xl font-bold mb-6">Partner Hospitals</h1>
+              <p className="text-xl opacity-90 max-w-3xl mx-auto">
+                Network of China's premier JCI-accredited medical institutions
+              </p>
+            </div>
           </AnimatedSection>
         </div>
       </section>
@@ -20,27 +37,7 @@ const Hospitals = () => {
       {/* Hospital Partners Section */}
       <HospitalPartners />
 
-      {/* Additional CTA */}
-      <section className="section-padding">
-        <div className="container-custom text-center">
-          <AnimatedSection>
-            <div className="bg-gradient-to-r from-primary-blue to-primary-teal rounded-2xl p-12 text-white">
-              <h2 className="text-3xl font-bold mb-6">Need Help Choosing a Hospital?</h2>
-              <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-                Our medical coordinators will help you select the best hospital based on your condition and requirements.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-white text-primary-blue px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition">
-                  Free Hospital Selection Consultation
-                </button>
-                <button className="bg-transparent border-2 border-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition">
-                  Download Hospital Guide
-                </button>
-              </div>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+      
     </div>
   );
 };

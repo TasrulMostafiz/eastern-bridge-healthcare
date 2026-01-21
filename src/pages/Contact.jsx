@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Send, CheckCircle,MessageSquare  } from 'lucide-react';
 import AnimatedSection from '../components/ui/AnimatedSection';
 
 const Contact = () => {
@@ -59,14 +59,60 @@ const Contact = () => {
   return (
     <div className="pt-20">
       {/* Hero */}
-      <section className="bg-gradient-to-r from-primary-blue/10 to-primary-teal/10 py-20">
-        <div className="container-custom text-center">
-          <AnimatedSection>
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">Contact Us</h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Get in touch with our medical experts for personalized healthcare solutions
-            </p>
-          </AnimatedSection>
+      {/* Contact Page Hero */}
+      <section className="relative bg-gradient-to-r from-primary-blue to-primary-navy text-white py-20 overflow-hidden">
+        {/* Map-like Grid */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `linear-gradient(to right, currentColor 1px, transparent 1px),
+                        linear-gradient(to bottom, currentColor 1px, transparent 1px)`,
+            backgroundSize: '50px 50px'
+          }}></div>
+
+          {/* Location Marker */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <MapPin className="w-24 h-24 opacity-20" />
+          </div>
+        </div>
+
+        <div className="container-custom relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <AnimatedSection>
+              <div>
+                <div className="flex items-center mb-6">
+                  <MessageSquare className="w-12 h-12 mr-4" />
+                  <h1 className="text-5xl font-bold">Contact Us</h1>
+                </div>
+                <p className="text-xl opacity-90 mb-8">
+                  Connect with our medical team for personalized healthcare solutions
+                </p>
+                <div className="space-y-4">
+                  <div className="flex items-center">
+                    <Phone className="mr-3" />
+                    <span className="text-xl">24/7 Emergency: +86 138 0013 8000</span>
+                  </div>
+                  <div className="flex items-center">
+                    <Clock className="mr-3" />
+                    <span>Immediate response guaranteed</span>
+                  </div>
+                </div>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.2}>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                <h3 className="text-2xl font-bold mb-4">Quick Contact</h3>
+                <div className="space-y-4">
+                  <button className="w-full bg-white text-primary-blue py-3 rounded-lg font-bold hover:bg-gray-100 transition">
+                    Book Free Consultation
+                  </button>
+                  <button className="w-full border-2 border-white py-3 rounded-lg font-bold hover:bg-white/10 transition">
+                    WhatsApp Chat
+                  </button>
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
         </div>
       </section>
 

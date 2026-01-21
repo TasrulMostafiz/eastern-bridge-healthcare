@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { Activity, Stethoscope, Heart, Brain, Eye, Bone, Pill, Users } from 'lucide-react';
 import AnimatedSection from '../components/ui/AnimatedSection';
 import ServiceCard from '../components/ui/ServiceCard';
-import PatientTestimonials from '../components/sections/PatientTestimonials';
 
 const Services = () => {
   const cancerTypes = [
@@ -63,12 +62,34 @@ const Services = () => {
   return (
     <div className="pt-20">
       {/* Hero */}
-      <section className="bg-gradient-to-r from-primary-blue/10 to-primary-teal/10 py-20">
-        <div className="container-custom text-center">
+      <section className="relative bg-white py-20 overflow-hidden">
+        {/* Floating Medical Icons */}
+        <div className="absolute inset-0 opacity-5">
+          {[Stethoscope, Heart, Activity, Brain, Eye, Pill].map((Icon, i) => (
+            <div
+              key={i}
+              className="absolute"
+              style={{
+                top: `${20 + i * 15}%`,
+                left: `${10 + i * 20}%`,
+                transform: `rotate(${i * 60}deg)`,
+              }}
+            >
+              <Icon size={80} className="text-primary-blue" />
+            </div>
+          ))}
+        </div>
+
+        <div className="container-custom relative z-10 text-center">
           <AnimatedSection>
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">Our Medical Services</h1>
+            <h1 className="text-5xl font-bold text-gray-900 mb-6">
+              Our Medical Services
+              <span className="block text-primary-teal text-3xl mt-2">
+                Advanced Healthcare Solutions
+              </span>
+            </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              World-class healthcare services combining advanced technology with compassionate care.
+              Comprehensive treatment programs using cutting-edge medical technology
             </p>
           </AnimatedSection>
         </div>
@@ -156,8 +177,7 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Patient Testimonials */}
-      <PatientTestimonials />
+     
 
       {/* CTA */}
       <section className="bg-gradient-to-r from-primary-blue to-primary-navy text-white section-padding">
