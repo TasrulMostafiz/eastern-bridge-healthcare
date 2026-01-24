@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Search, Filter, Star, Award, Users, Calendar, MessageSquare, Brain, Heart, Bone, Eye } from 'lucide-react';
 import AnimatedSection from '../components/ui/AnimatedSection';
+import ConsultantsHero from '../components/sections/ConsultantsHero';
 
 const Consultants = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -104,21 +105,12 @@ const Consultants = () => {
   });
 
   return (
-    <div className="pt-20">
+    <div className="pt-20">      
       {/* Hero */}
-      <section className="bg-gradient-to-r from-primary-blue/10 to-primary-teal/10 py-20">
-        <div className="container-custom text-center">
-          <AnimatedSection>
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">Find Your Consultant</h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Connect with leading medical specialists from China's top hospitals
-            </p>
-          </AnimatedSection>
-        </div>
-      </section>
+      <ConsultantsHero />
 
       {/* Search and Filter */}
-      <section className="section-padding">
+      <section id="search-section" className="section-padding">
         <div className="container-custom">
           <AnimatedSection>
             <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">

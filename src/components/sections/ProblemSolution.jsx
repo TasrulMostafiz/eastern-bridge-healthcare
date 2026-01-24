@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { AlertTriangle, CheckCircle, Shield, Heart } from 'lucide-react';
 import AnimatedSection from '../ui/AnimatedSection';
+import SectionHeader from '../sections/SectionHeader';
 
 const ProblemSolution = () => {
   const problems = [
@@ -59,6 +60,7 @@ const ProblemSolution = () => {
             </p>
           </div>
         </AnimatedSection>
+        
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Problems Column */}
