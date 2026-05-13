@@ -80,12 +80,8 @@ const Footer = () => {
   ];
 
   const services = [
-    'Cancer Treatment',
-    'Full Body Screening',
-    'Weight Management',
-    'Clinical Trials',
-    'Telemedicine',
-    'Medical Visa'
+    'Consultation',    
+    'Patient Support Services'
   ];
 
   const contactInfo = [
@@ -404,26 +400,7 @@ const Footer = () => {
               </div>
             </div>
             
-            {/* Emergency Notice */}
-            <motion.div
-              animate={{
-                scale: [1, 1.02, 1],
-                boxShadow: [
-                  "0 4px 20px rgba(239, 68, 68, 0.3)",
-                  "0 6px 25px rgba(239, 68, 68, 0.5)",
-                  "0 4px 20px rgba(239, 68, 68, 0.3)"
-                ]
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              className="mt-6 inline-flex items-center bg-red-600/20 backdrop-blur-sm border border-red-500/30 rounded-full px-6 py-3"
-            >
-              <Heart size={18} className="mr-2 text-red-300" />
-              <span className="font-semibold text-red-100">24/7 Emergency Support Available</span>
-            </motion.div>
+            
           </motion.div>
         </div>
       </div>

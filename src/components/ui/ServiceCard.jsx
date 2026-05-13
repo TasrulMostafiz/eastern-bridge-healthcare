@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronRight, Stethoscope, Activity, Heart, Brain } from 'lucide-react';
+import { ChevronRight, Stethoscope,  Heart, Brain,HandHelping} from 'lucide-react';
 
 const iconMap = {
-  cancer: Activity,
   screening: Stethoscope,
   heart: Heart,
   brain: Brain,
+  hands_helping: HandHelping,
 };
 
 const ServiceCard = ({ title, description, icon, features, delay = 0 }) => {

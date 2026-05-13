@@ -332,40 +332,7 @@ const HeroSection = () => {
               </motion.button>
             </motion.div>
 
-            {/* Emergency Contact */}
-            <motion.div 
-              variants={textVariants}
-              animate={{
-                backgroundColor: ['rgba(239, 68, 68, 0.1)', 'rgba(239, 68, 68, 0.2)', 'rgba(239, 68, 68, 0.1)'],
-                borderColor: ['rgba(239, 68, 68, 0.3)', 'rgba(239, 68, 68, 0.5)', 'rgba(239, 68, 68, 0.3)']
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="bg-red-50/80 backdrop-blur-sm border border-red-200 rounded-2xl p-6"
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <motion.div
-                    animate={{ rotate: [0, 10, -10, 0] }}
-                    transition={{ duration: 0.5, repeat: Infinity }}
-                    className="w-14 h-14 bg-red-100 rounded-full flex items-center justify-center mr-4"
-                  >
-                    <Phone className="text-red-600" size={28} />
-                  </motion.div>
-                  <div>
-                    <div className="text-sm text-gray-600">24/7 Emergency</div>
-                    <div className="text-xl font-bold text-gray-900">+86 138 0013 8000</div>
-                  </div>
-                </div>
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="bg-red-600 text-white px-6 py-3 rounded-xl font-bold flex items-center"
-                >
-                  <MessageSquare size={20} className="mr-2" />
-                  Live Chat
-                </motion.button>
-              </div>
-            </motion.div>
+            
           </div>
 
           {/* Right Column - Consultation Form */}
@@ -455,23 +422,7 @@ const HeroSection = () => {
               </motion.div>
             </motion.div>
 
-            {/* Floating Badge */}
-            <motion.div
-              animate={{
-                rotate: [0, 360],
-                scale: [1, 1.1, 1]
-              }}
-              transition={{
-                rotate: { duration: 20, repeat: Infinity, ease: "linear" },
-                scale: { duration: 2, repeat: Infinity }
-              }}
-              className="absolute -top-6 -right-6 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-6 py-3 rounded-2xl shadow-2xl"
-            >
-              <div className="flex items-center font-bold">
-                <Award size={20} className="mr-2" />
-                No.1 in Medical Tourism
-              </div>
-            </motion.div>
+            
           </motion.div>
         </motion.div>
       </div>

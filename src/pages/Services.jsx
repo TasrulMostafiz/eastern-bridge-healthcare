@@ -4,51 +4,26 @@ import { Activity, Stethoscope, Heart, Brain, Eye, Bone, Pill, Users } from 'luc
 import AnimatedSection from '../components/ui/AnimatedSection';
 import ServiceCard from '../components/ui/ServiceCard';
 
-const Services = () => {
-  const cancerTypes = [
-    'Hematologic Malignancies',
-    'Breast Cancer',
-    'Lung Cancer',
-    'Gastric Cancer',
-    'Colorectal Cancer',
-    'Liver Cancer',
-    'Pancreatic Cancer',
-    'Prostate Cancer',
-    'Brain Tumors',
-    'Bone and Soft Tissue Tumors',
-    'Skin Cancer'
-  ];
+const Services = () => {  
 
   const allServices = [
     {
-      title: 'Advanced Cancer Treatment',
-      description: 'Comprehensive oncology care using latest technology and personalized treatment plans.',
-      icon: 'cancer',
-      features: ['Chemotherapy', 'Radiation Therapy', 'Immunotherapy', 'Targeted Therapy'],
+      title: 'Consultation',
+      description: 'Expert medical consultations with experienced specialists to guide patients through diagnosis, treatment planning, second opinions, and continuous follow-up care.',
+      icon: 'stethoscope',
+      features: ['Appointment with Doctor', 'Invitation Letter', 'Follow-up with Doctors and Post-Treatment Care', 'Online consultation with doctor','Reports'],
       color: 'from-red-500 to-orange-500'
     },
     {
-      title: 'Full Body Screening',
-      description: 'Early detection through comprehensive health checkups and advanced diagnostic imaging.',
-      icon: 'screening',
-      features: ['MRI/CT Scans', 'Blood Tests', 'Cancer Markers', 'Health Assessment'],
+      title: 'Patient Support Services',
+      description: 'Dedicated patient assistance including visa processing, travel arrangements, tele-counseling, and health assessments to ensure a smooth medical journey.',
+      icon: 'hands_helping',
+      features: ['Tele Counseling', 'VISA Processing', 'Ticket arrangement', 'Health Assessment'],
       color: 'from-blue-500 to-teal-500'
-    },
-    {
-      title: 'Weight Management',
-      description: 'Medical programs for sustainable weight loss and blood glucose reversal.',
-      icon: 'heart',
-      features: ['Custom Diet Plans', 'Exercise Guidance', 'Medical Monitoring', 'Lifestyle Coaching'],
-      color: 'from-green-500 to-emerald-500'
-    },
-    {
-      title: 'Clinical Trials',
-      description: 'Access to cutting-edge experimental treatments and new therapies.',
-      icon: 'brain',
-      features: ['Latest Treatments', 'Expert Supervision', 'Comprehensive Care', 'Regular Monitoring'],
-      color: 'from-purple-500 to-pink-500'
     }
   ];
+
+  
 
   const treatmentProcess = [
     { step: 1, title: 'Consultation', description: 'Free medical consultation with our experts' },
@@ -95,33 +70,9 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Cancer Types */}
       <section className="section-padding">
         <div className="container-custom">
-          <AnimatedSection>
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Cancer Specializations</h2>
-              <p className="text-xl text-gray-600">Expert treatment for various cancer types</p>
-            </div>
-          </AnimatedSection>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
-            {cancerTypes.map((type, index) => (
-              <AnimatedSection key={index} delay={index * 0.05}>
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
-                >
-                  <div className="flex items-center">
-                    <div className="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center mr-3">
-                      <Activity size={16} className="text-red-600" />
-                    </div>
-                    <span className="font-medium text-gray-800">{type}</span>
-                  </div>
-                </motion.div>
-              </AnimatedSection>
-            ))}
-          </div>
+          
 
           {/* Services Grid */}
           <div className="grid md:grid-cols-2 gap-8 mb-16">
@@ -180,7 +131,7 @@ const Services = () => {
      
 
       {/* CTA */}
-      <section className="bg-gradient-to-r from-primary-blue to-primary-navy text-white section-padding">
+      {/* <section className="bg-gradient-to-r from-primary-blue to-primary-navy text-white section-padding">
         <div className="container-custom text-center">
           <AnimatedSection>
             <h2 className="text-3xl font-bold mb-6">Start Your Treatment Journey</h2>
@@ -205,7 +156,7 @@ const Services = () => {
             </div>
           </AnimatedSection>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };

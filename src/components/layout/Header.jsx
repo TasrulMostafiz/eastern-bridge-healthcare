@@ -3,69 +3,64 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Menu, 
   X, 
-  Phone, 
-  MessageSquare, 
   ChevronDown,
-  MapPin,
-  Globe,
   Stethoscope,
-  Zap
+  Zap,
+  MessageSquare
 } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import Logo from '../ui/Logo';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
   const location = useLocation();
 
-  // Navigation items
+  // Navigation items - with shortened display names for better fit
   const navItems = [
     { name: 'Home', path: '/' },
-    // { name: 'About Us', path: '/about' },
+    { name: 'About', path: '/about' }, // Shortened from 'About Us'
     { 
-      name: 'Services', 
-      path: '/services',
+      name: 'Treatment', 
+      path: '/treatment',
+      fullName: 'Treatment', // For desktop display
       submenu: [
-        { name: 'Cancer Treatment', path: '/services/cancer', icon: Stethoscope },
-        { name: 'Full Body Screening', path: '/services/screening', icon: Zap },
-        { name: 'Weight Management', path: '/services/weight', icon: Stethoscope },
-        { name: 'Clinical Trials', path: '/services/trials', icon: Zap }
+        { name: 'Why Treatment in CHINA', path: '/treatment/why-china', icon: Stethoscope, shortName: 'Why China' },
+        { name: 'CAR-T Immunotherapy', path: '/treatment/car-t', icon: Zap, shortName: 'CAR-T Therapy' },
+        { name: 'Gene Therapy', path: '/treatment/gene-therapy', icon: Stethoscope, shortName: 'Gene Therapy' },
+        { name: 'Advanced Cancer Treatment', path: '/treatment/cancer', icon: Stethoscope, shortName: 'Cancer Care' },
+        { name: "Parkinson's Disease Treatment", path: '/treatment/parkinsons', icon: Stethoscope, shortName: "Parkinson's" },
+        { name: 'Minimally Invasive Tumor Therapy', path: '/treatment/minimally-invasive', icon: Zap, shortName: 'Tumor Therapy' },
+        { name: 'Spinal Surgery', path: '/treatment/spinal-surgery', icon: Stethoscope, shortName: 'Spinal Surgery' },
+        { name: 'Traditional Chinese Medicine (TCM)', path: '/treatment/tcm', icon: Stethoscope, shortName: 'TCM' },
+        { name: 'Ophthalmology', path: '/treatment/ophthalmology', icon: Stethoscope, shortName: 'Eye Care' },
+        { name: 'Full-Body Cancer Screening', path: '/treatment/screening', icon: Zap, shortName: 'Cancer Screening' },
+        { name: 'Weight Loss Program', path: '/treatment/weight-loss', icon: Stethoscope, shortName: 'Weight Loss' },
+        { name: 'Clinical Trials', path: '/treatment/clinical-trials', icon: Zap, shortName: 'Clinical Trials' }
       ]
     },
-    { name: 'Hospitals', path: '/hospitals' },
-    { name: 'Consultants', path: '/consultants' },
-    { name: 'For Patients', path: '/patients' },
-    { name: 'Contact', path: '/contact' }
+    { 
+      name: 'Services', // Shortened from 'Our Services'
+      path: '/services',
+      fullName: 'Our Services'      
+    },
+    { name: 'Hospitals', path: '/hospitals' }, // Shortened from 'Hospitals & Doctors'
+    { name: 'Visitors and Patients', path: '/patients' }, // Shortened from 'For Patients'
+    { 
+      name: 'News', // Shortened from 'News & Media'
+      path: '/news',
+      fullName: 'News & Media',
+      submenu: [
+        { name: 'News Updates', path: '/news/updates', icon: Stethoscope, shortName: 'Updates' },
+        { name: 'Patient Stories', path: '/news/patient-stories', icon: Stethoscope, shortName: 'Stories' },
+        { name: 'Publications', path: '/news/publications', icon: Stethoscope, shortName: 'Publications' },
+        { name: 'Photo Gallery', path: '/news/gallery', icon: Stethoscope, shortName: 'Gallery' },
+        { name: 'Video Clips', path: '/news/videos', icon: Zap, shortName: 'Videos' }
+      ]
+    }
   ];
 
   // Animation variants
-  const emergencyBarVariants = {
-    hidden: { y: -50, opacity: 0 },
-    visible: { 
-      y: 0, 
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 15
-      }
-    }
-  };
-
-  const logoVariants = {
-    hidden: { scale: 0, rotate: -180 },
-    visible: { 
-      scale: 1, 
-      rotate: 0,
-      transition: {
-        type: "spring",
-        stiffness: 200,
-        damping: 15
-      }
-    }
-  };
-
   const navItemVariants = {
     hidden: { opacity: 0, y: -20 },
     visible: (i) => ({
@@ -78,7 +73,7 @@ const Header = () => {
       }
     }),
     hover: {
-      scale: 1.1,
+      scale: 1.05, // Reduced from 1.1 to prevent overflow
       transition: {
         type: "spring",
         stiffness: 400,
@@ -141,74 +136,6 @@ const Header = () => {
 
   return (
     <>
-      {/* Emergency Top Bar with floating animation */}
-      <motion.div 
-        initial="hidden"
-        animate="visible"
-        variants={emergencyBarVariants}
-        className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 text-white py-3 px-4 relative overflow-hidden"
-      >
-        {/* Animated background pulse */}
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.1, 0.3]
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-400"
-        />
-        
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center relative z-10">
-          <div className="flex items-center space-x-4 mb-2 sm:mb-0">
-            <motion.div
-              animate={{
-                x: [0, 5, 0],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              className="flex items-center bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full"
-            >
-              <Phone size={18} className="mr-2" />
-              <span className="font-bold text-sm sm:text-base">Emergency: +86 138 0013 8000</span>
-            </motion.div>
-            <div className="hidden md:flex items-center">
-              <MapPin size={18} className="mr-2" />
-              <span className="text-sm font-medium">Beijing, China</span>
-            </div>
-          </div>
-          <motion.div 
-            className="flex items-center space-x-4"
-            animate={{
-              scale: [1, 1.05, 1],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          >
-            <button className="flex items-center text-sm font-medium hover:text-yellow-200 transition">
-              <MessageSquare size={18} className="mr-2" />
-              <span>24/7 Live Support</span>
-            </button>
-            <div className="flex items-center">
-              <Globe size={18} className="mr-2" />
-              <select className="bg-transparent border-none outline-none text-sm font-medium">
-                <option value="en">EN</option>
-                <option value="zh">中文</option>
-              </select>
-            </div>
-          </motion.div>
-        </div>
-      </motion.div>
-
       {/* Main Navigation */}
       <motion.header 
         initial={{ y: -100 }}
@@ -223,8 +150,8 @@ const Header = () => {
               <Logo />
             </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-6">
+            {/* Desktop Navigation - Reduced spacing */}
+            <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
               {navItems.map((item, index) => (
                 <motion.div 
                   key={item.name} 
@@ -238,53 +165,54 @@ const Header = () => {
                   {item.submenu ? (
                     <>
                       <motion.button
-                        onClick={() => setIsServicesOpen(!isServicesOpen)}
-                        className={`flex items-center font-bold text-gray-800 hover:text-blue-700 transition-colors px-3 py-2 rounded-lg ${
+                        onClick={() => setOpenDropdown(openDropdown === item.name ? null : item.name)}
+                        className={`flex items-center font-bold text-sm xl:text-base text-gray-800 hover:text-blue-700 transition-colors px-2 xl:px-3 py-2 rounded-lg whitespace-nowrap ${
                           location.pathname.startsWith(item.path) ? 'bg-blue-50 text-blue-700' : ''
                         }`}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
                       >
-                        {item.name}
+                        {item.fullName || item.name}
                         <motion.span
-                          animate={{ rotate: isServicesOpen ? 180 : 0 }}
+                          animate={{ rotate: openDropdown === item.name ? 180 : 0 }}
                           transition={{ type: "spring", stiffness: 200 }}
                         >
-                          <ChevronDown size={18} className="ml-2" />
+                          <ChevronDown size={16} className="ml-1" />
                         </motion.span>
                       </motion.button>
                       
-                      {/* Services Dropdown with bounce animation */}
+                      {/* Dropdown menu - Adjusted width */}
                       <AnimatePresence>
-                        {isServicesOpen && (
+                        {openDropdown === item.name && (
                           <motion.div
                             variants={dropdownVariants}
                             initial="hidden"
                             animate="visible"
                             exit="exit"
-                            className="absolute left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border py-2 z-50"
+                            className="absolute left-0 mt-2 w-56 bg-white rounded-xl shadow-2xl border py-2 z-50"
                           >
                             {item.submenu.map((subItem) => {
                               const Icon = subItem.icon;
+                              const displayName = subItem.shortName || subItem.name;
                               return (
                                 <motion.div
                                   key={subItem.name}
                                   whileHover={{ 
-                                    x: 10,
+                                    x: 5,
                                     transition: { type: "spring", stiffness: 300 }
                                   }}
                                 >
                                   <Link
                                     to={subItem.path}
-                                    className="flex items-center px-4 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-teal-50 hover:text-blue-700 transition group"
-                                    onClick={() => setIsServicesOpen(false)}
+                                    className="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-teal-50 hover:text-blue-700 transition group"
+                                    onClick={() => setOpenDropdown(null)}
                                   >
-                                    <Icon size={18} className="mr-3 text-blue-500" />
-                                    <span className="font-medium">{subItem.name}</span>
+                                    <Icon size={16} className="mr-2 text-blue-500 flex-shrink-0" />
+                                    <span className="font-medium truncate">{displayName}</span>
                                     <motion.span
-                                      initial={{ opacity: 0, x: -10 }}
+                                      initial={{ opacity: 0, x: -5 }}
                                       whileHover={{ opacity: 1, x: 0 }}
-                                      className="ml-auto text-blue-500"
+                                      className="ml-auto text-blue-500 text-xs"
                                     >
                                       →
                                     </motion.span>
@@ -297,20 +225,20 @@ const Header = () => {
                       </AnimatePresence>
                     </>
                   ) : (
-                    <motion.div whileHover={{ scale: 1.05 }}>
+                    <motion.div whileHover={{ scale: 1.02 }}>
                       <Link
                         to={item.path}
-                        className={`relative font-bold px-3 py-2 rounded-lg transition-colors ${
+                        className={`relative font-bold text-sm xl:text-base px-2 xl:px-3 py-2 rounded-lg transition-colors whitespace-nowrap ${
                           location.pathname === item.path
                             ? 'text-blue-700 bg-blue-50'
                             : 'text-gray-800 hover:text-blue-700 hover:bg-gray-50'
                         }`}
                       >
-                        {item.name}
+                        {item.fullName || item.name}
                         {location.pathname === item.path && (
                           <motion.div
                             layoutId="underline"
-                            className="absolute -bottom-1 left-3 right-3 h-1 bg-gradient-to-r from-blue-500 to-teal-400 rounded-full"
+                            className="absolute -bottom-1 left-2 right-2 h-0.5 bg-gradient-to-r from-blue-500 to-teal-400 rounded-full"
                             initial={{ scaleX: 0 }}
                             animate={{ scaleX: 1 }}
                             transition={{ type: "spring", stiffness: 300 }}
@@ -321,50 +249,6 @@ const Header = () => {
                   )}
                 </motion.div>
               ))}
-              
-              {/* Consultation Button with pulse animation */}
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ type: "spring", stiffness: 200, delay: 0.5 }}
-              >
-                <motion.button
-                  whileHover={{ 
-                    scale: 1.1,
-                    boxShadow: "0 10px 25px rgba(37, 99, 235, 0.4)"
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  animate={{
-                    boxShadow: [
-                      "0 4px 15px rgba(37, 99, 235, 0.3)",
-                      "0 6px 20px rgba(37, 99, 235, 0.5)",
-                      "0 4px 15px rgba(37, 99, 235, 0.3)"
-                    ]
-                  }}
-                  transition={{
-                    boxShadow: {
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }
-                  }}
-                  className="bg-gradient-to-r from-blue-600 to-teal-500 text-white px-7 py-3 rounded-xl font-bold shadow-xl relative overflow-hidden"
-                >
-                  {/* Button shine effect */}
-                  <motion.div
-                    className="absolute top-0 left-0 h-full w-1/2 bg-gradient-to-r from-transparent via-white/30 to-transparent"
-                    animate={{
-                      x: ["-100%", "200%"]
-                    }}
-                    transition={{
-                      duration: 1.5,
-                      repeat: Infinity,
-                      ease: "linear"
-                    }}
-                  />
-                  <span className="relative z-10">Free Consultation</span>
-                </motion.button>
-              </motion.div>
             </div>
 
             {/* Mobile menu button */}
@@ -418,51 +302,66 @@ const Header = () => {
                     transition={{ type: "spring", stiffness: 100 }}
                   >
                     {item.submenu ? (
-                      <div className="py-3">
-                        <div className="font-bold text-lg text-gray-900 mb-3 px-2">{item.name}</div>
-                        <div className="pl-6 space-y-3 border-l-2 border-blue-200">
-                          {item.submenu.map((subItem, idx) => {
-                            const Icon = subItem.icon;
-                            return (
-                              <motion.div
-                                key={subItem.name}
-                                initial={{ x: -10, opacity: 0 }}
-                                animate={{ x: 0, opacity: 1 }}
-                                transition={{ delay: idx * 0.1 }}
-                              >
-                                <Link
-                                  to={subItem.path}
-                                  className="flex items-center py-3 text-gray-700 hover:text-blue-700 transition"
-                                  onClick={() => setIsMenuOpen(false)}
-                                >
-                                  <Icon size={18} className="mr-3 text-blue-500" />
-                                  <span className="font-medium">{subItem.name}</span>
-                                </Link>
-                              </motion.div>
-                            );
-                          })}
+                      <div className="py-2">
+                        <div 
+                          className="font-bold text-base text-gray-900 mb-2 px-2 flex items-center justify-between cursor-pointer"
+                          onClick={() => setOpenDropdown(openDropdown === item.name ? null : item.name)}
+                        >
+                          <span>{item.fullName || item.name}</span>
+                          <ChevronDown 
+                            size={16} 
+                            className={`transform transition-transform ${openDropdown === item.name ? 'rotate-180' : ''}`} 
+                          />
                         </div>
+                        <AnimatePresence>
+                          {openDropdown === item.name && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              className="pl-4 space-y-2 border-l-2 border-blue-200 overflow-hidden"
+                            >
+                              {item.submenu.map((subItem, idx) => {
+                                const Icon = subItem.icon;
+                                const displayName = subItem.shortName || subItem.name;
+                                return (
+                                  <motion.div
+                                    key={subItem.name}
+                                    initial={{ x: -10, opacity: 0 }}
+                                    animate={{ x: 0, opacity: 1 }}
+                                    transition={{ delay: idx * 0.05 }}
+                                  >
+                                    <Link
+                                      to={subItem.path}
+                                      className="flex items-center py-2 text-sm text-gray-700 hover:text-blue-700 transition"
+                                      onClick={() => {
+                                        setIsMenuOpen(false);
+                                        setOpenDropdown(null);
+                                      }}
+                                    >
+                                      <Icon size={16} className="mr-2 text-blue-500 flex-shrink-0" />
+                                      <span className="font-medium">{displayName}</span>
+                                    </Link>
+                                  </motion.div>
+                                );
+                              })}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </div>
                     ) : (
                       <motion.div whileHover={{ x: 5 }}>
                         <Link
                           to={item.path}
-                          className="block py-3 text-lg font-bold text-gray-900 hover:text-blue-700 px-2"
+                          className="block py-2 text-base font-bold text-gray-900 hover:text-blue-700 px-2"
                           onClick={() => setIsMenuOpen(false)}
                         >
-                          {item.name}
+                          {item.fullName || item.name}
                         </Link>
                       </motion.div>
                     )}
                   </motion.div>
                 ))}
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-full bg-gradient-to-r from-blue-600 to-teal-500 text-white py-4 rounded-xl font-bold text-lg shadow-lg mt-6"
-                >
-                  Free Consultation
-                </motion.button>
               </div>
             </motion.div>
           )}
